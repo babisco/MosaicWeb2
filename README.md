@@ -28,3 +28,4 @@
 		- >> git clone https://github.com/babisco/MosaicWeb.git
 		- >> git clone https://github.com/babisco/MosaicWeb.git MosaicWebDev
 		- >> Eclipse Gradle Import
+	- MosaicWeb2 생성하여  MosaicWeb과 같은 과정 실행해보기 
