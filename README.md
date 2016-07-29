@@ -67,3 +67,44 @@
 	- Eclipse Output Directory 변경
 		- >> bin => build/classes/main
 		(properties->Java build path->source->output folder)
+
+7. Mybatis 설정
+
+	- mvnrepository.com => search : spring boot mybatis
+	- 오라클 디라이버 설정 
+		- >> folder 생성 : src/main/webapp/WEB-INF/lib/ojdbc7.jar
+	- build.gradle 
+		- >> dependencies => compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.1.1'
+						  => compile files('src/main/webapp/WEB-INF/lib/ojdbc7.jar'); 
+	- Eclipse => Gradle Refresh 수행
+	- application.properties에 DataSource 설정
+		- >> spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+		- >> spring.datasource.url= jdbc:oracle:thin:@52.78.98.96:1521:orcl 
+			 (toadExtension => connection => properties)
+		- >> spring.datasource.username=scott
+		- >> spring.datasource.password=tiger
+	- gradle bootRun 
+	- notepad src/main/java/com/hybrid/mapper/DeptMapper.java 인터페이스 생성 (DB관련)
+	- notepad src/main/java/com/hybrid/domain/Dept.java 
+	- notepad src/test/java/com/hybrid/mapper/DeptMapperTest.java
+	- notepad src/main/webapp/dept.jsp
+	
+8. Deploy 방법
+	
+	- gradle war
+	- build/libs/MosaicWeb~~~~.war로 만들어짐
+	- cp MosaicWeb.war C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps
+	- Chrome => http://localhost/MosaicWeb (index.html이 불려옴)
+	
+9. Gluon 설정
+
+	- cp FXTemplate/src/* MosaciWeb/src/*
+	- merge FXTemplate/build.gradle MosaicWeb/build.gradle
+		- >> plugin => application plugin 설치
+		- >> repository => Gluon 저장소 설정
+		- >> dependencies => Gluon 설정
+	- merge com.hybrid.fx.MainApplication com.hybrid.MosaicWebApplication
+		- >> spring boot + gluon start together
+		- >> spring boot + gluon stop together
+		- >> PrimaryView에 WebView 추가
+
